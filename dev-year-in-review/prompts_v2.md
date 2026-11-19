@@ -50,14 +50,17 @@ ENVIRONMENTS — @image4 is the rooftop bar (PRESENT): reproduce it exactly, the
 SCENE: A comedy short. PRESENT scenes are warm golden hour. MEMORY scenes are cooler and more muted than the rooftop, but natural, not grim. HARD CUTS between locations. Only the named characters appear; no extra people anywhere except the one bus passenger.
 CRITICAL — frame one is a CLOSE-UP of Mina's face at the bistro table, already mid-conversation. Do not show anyone arriving.
 PERFORMANCE STYLE: grounded deadpan comedy. Dev is supremely confident on the rooftop; in memories he is a tired, slightly pathetic everyman. Natural speed throughout, no slow motion.
-AUDIO — GENERATE NATIVE AUDIO WITH THE VIDEO. English. ONLY the on-screen lip-synced lines below are spoken; accurate lip-sync, never overlapping. There is NO narration and NO voiceover anywhere — during the bus shot (0:04–0:08), the studio typing shot (0:08–0:12) and while the phone screen is answering (0:14.5–0:16.5) nobody speaks at all: ambient sound only, everyone's mouth stays closed:
+AUDIO — GENERATE NATIVE AUDIO WITH THE VIDEO. English. Dev's voice is the SAME voice in every line, on screen and in voiceover. Lines clearly separated, never overlapping, accurate lip-sync for on-screen speakers. Each voiceover line must START AND FINISH inside its own shot — never let a line run across a cut:
  • 0:00–0:02 — MINA, warm and curious: "So... how was your year?"
  • 0:02–0:04 — DEV, smug: "Honestly? A year of more."
+ • 0:04.5–0:07.5 — DEV off-screen voiceover, smug, heard ONLY over the bus shot (nobody on screen moves their mouth; Dev is asleep): "I travelled a lot. Always on the move."
+ • 0:08.5–0:10.5 — DEV off-screen voiceover, heard ONLY over the studio typing shot (his mouth stays closed while typing): "Built my own AI app."
  • 0:13–0:14.5 — DEV on screen, into his phone, urgent: "Write my landlord an excuse."
+ • 0:14.5–0:16.5 — PHONE ASSISTANT, calm polite synthetic female voice from the phone speaker: "I can't help with that. Calling your landlord."
  • 0:17–0:18 — DEV, panicked: "NO—!"
-No other words. (Voiceovers and the phone assistant's reply are added in post.) Sound design: rooftop city hum, distant traffic, glasses clink; bus engine drone, air-brake hiss, a soft snore; keyboard clacking, a bright notification ding at 0:12, a phone dial tone ringing from 0:17. NO MUSIC SCORE.
+No other words. Sound design: rooftop city hum, distant traffic, glasses clink; bus engine drone, air-brake hiss, a soft snore; keyboard clacking, a bright notification ding at 0:12, a phone dial tone ringing from 0:17. NO MUSIC SCORE.
 TIMELINE:
-0:00–0:02 — CLOSE-UP on Mina at the bistro table on the @image4 rooftop, golden hour, string-light bokeh behind her. She holds her phone up like a podcast microphone toward camera-right (toward Dev) and asks her question with a curious smile.
+0:00–0:02 — CLOSE-UP on Mina at the bistro table on the @image4 rooftop, golden hour, string-light bokeh behind her. She holds her SMARTPHONE (not a microphone) up like a podcast mic toward camera-right (toward Dev) and asks her question with a curious smile.
 0:02–0:04 — Close-up on Dev in the @image1 look: he slowly slides on his gold aviators and answers, chin up. Slight push-in.
 0:04–0:08 — HARD CUT to the @image5 night bus. Dev in the @image2 look is asleep with his head resting on the bearded passenger's shoulder, MOUTH CLOSED, peaceful, NO DROOL, nothing wet on the jacket. The passenger turns and stares dead into the camera, unamused. Static handheld, cold green fluorescent light.
 0:08–0:12 — HARD CUT to the @image6 studio at 2am. Dev sits in the mesh office chair typing fast at three blue-glowing monitors; warm desk lamp on, room tidy and cozy. At 0:12 a notification pops on the centre monitor (screen text blurry and unreadable) and his eyes go wide.
@@ -83,10 +86,13 @@ ENVIRONMENTS — @image2 tiny kitchenette with coil stove, beige fridge and a sm
 SCENE: Comedy short, MEMORY scenes only: muted, slightly cool and tired-looking, but natural, not grim. HARD CUTS between locations. Dev is the only person on screen; the bus driver is never seen.
 CRITICAL — frame one opens with Dev already at the stove mid-cooking. Do not show him entering.
 PERFORMANCE STYLE: grounded deadpan comedy, a tired everyman taking himself far too seriously. Natural speed, no slow motion.
-AUDIO — GENERATE NATIVE AUDIO WITH THE VIDEO. English. ONLY the two on-screen lip-synced lines below are spoken. There is NO narration and NO voiceover anywhere — at all other times Dev's mouth is closed (except coughing, panting and grinning) and only sound effects are heard:
+AUDIO — GENERATE NATIVE AUDIO WITH THE VIDEO. English. Dev's voice is the SAME voice in every line. Off-screen voiceover lines are Dev's smug narration and his mouth does not move for them. Each voiceover line must START AND FINISH inside its own shot — never let a line run across a cut:
+ • 0:00–0:02.5 — DEV voiceover, smug: "Learned to cook. Fusion cuisine."
  • 0:05–0:06 — DEV on screen, coughing, kissing his fingertips: "Chef's kiss."
+ • 0:07–0:09.5 — DEV voiceover, heard ONLY over the bus-chase shot: "Got really into running."
+ • 0:12–0:15 — DEV voiceover, clearly enunciated: "I'm a filmmaker now. Big-budget action."
  • 0:18–0:20 — DEV on screen, whispering to himself under the duvet: "...one more."
-No other words. (Voiceovers are added in post.) Sound design: sizzling saucepan, a shrill smoke-detector beeping from 0:03, towel flapping, coughing; slapping flip-flops on pavement, panting, bus engine pulling away, one short bus horn honk at 0:10; in the dark studio soft screen taps, a cartoon whoosh on each tap, and a goat bleat from the phone at 0:17. NO MUSIC SCORE.
+No other words. Sound design: sizzling saucepan, a shrill smoke-detector beeping from 0:03, towel flapping, coughing; slapping flip-flops on pavement, panting, bus engine pulling away, one short bus horn honk at 0:10; in the dark studio soft screen taps, a cartoon whoosh on each tap, and a goat bleat from the phone at 0:17. NO MUSIC SCORE.
 TIMELINE:
 0:00–0:03 — @image2 kitchenette. Close-up: Dev, utterly focused, uses tweezers to place a single herb leaf on a neat mound of curly instant ramen noodles on a white plate, then squeezes a fancy swirl of ketchup. Smoke curls up from the saucepan behind him.
 0:03–0:06 — The smoke detector shrieks. Dev grabs a dish towel and frantically waves it at the ceiling, coughing through the smoke, then turns to camera and proudly kisses his fingertips.
@@ -119,7 +125,8 @@ ENVIRONMENTS — @image7 dim living room with a brown corduroy couch and cold TV
 SCENE: comedy short. MEMORY is muted and cool; PRESENT rooftop is warm golden hour. HARD CUTS. On the rooftop there are exactly two seats at the table and no other people.
 CRITICAL — frame one opens with Dev already on the couch crying into Bruno. Do not show anyone sitting down.
 PERFORMANCE STYLE: grounded deadpan comedy. Natural speed, no slow motion.
-AUDIO — GENERATE NATIVE AUDIO WITH THE VIDEO. English. ONLY the on-screen lip-synced lines below are spoken, never overlapping. There is NO narration and NO voiceover — during the living-room shot (0:00–0:06) Dev only sobs, no words:
+AUDIO — GENERATE NATIVE AUDIO WITH THE VIDEO. English. Dev's voice is the SAME voice in every line. Lines clearly separated, never overlapping, accurate lip-sync for on-screen speakers:
+ • 0:01–0:04 — DEV off-screen voiceover, smug (his mouth does not move; he only sobs on screen): "And emotionally? I've really grown."
  • 0:07–0:09 — MINA, sweet: "Wow. My dad's going to love this."
  • 0:09–0:10 — DEV, confused: "Your dad?"
  • 0:12–0:15 — MR. PARK on the phone speaker, stern: "Filmmaker, huh? Then make my rent appear."
