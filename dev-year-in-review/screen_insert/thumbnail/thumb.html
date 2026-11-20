@@ -13,7 +13,7 @@ html,body{margin:0;overflow:hidden;background:#000}
 </style></head><body>
 <div class="wrap" id="w"><div class="bg" id="bg"></div><div class="grad"></div>
 <div class="title" id="t">Out of<br>Credits</div>
-<div class="badge" id="b"><span class="dot" id="d">!</span><span>0 credits remaining</span></div></div>
+<div class="badge" id="b" style="display:none"><span class="dot" id="d"></span></div></div>
 <script>
 const p=new URLSearchParams(location.search); const W=+p.get('w'), H=+p.get('h');
 const w=document.getElementById('w'); w.style.width=W+'px'; w.style.height=H+'px';
@@ -23,7 +23,7 @@ if(W>H){ bg.style.backgroundSize='cover'; bg.style.backgroundPosition='center';
   b.style.left='76px'; b.style.top='70px'; b.style.fontSize='40px'; b.style.padding='16px 26px';
   d.style.width='46px'; d.style.height='46px'; d.style.lineHeight='46px'; d.style.fontSize='34px';
 } else { bg.style.backgroundSize='auto 100%'; bg.style.backgroundPosition='60% center';
-  t.style.left='0'; t.style.right='0'; t.style.textAlign='center'; t.style.bottom='420px'; t.style.fontSize='250px';
+  t.style.left='0'; t.style.right='0'; t.style.textAlign='center'; t.style.bottom='340px'; t.style.fontSize='250px';
   b.style.left='50%'; b.style.transform='translateX(-50%)'; b.style.bottom='310px'; b.style.fontSize='44px'; b.style.padding='18px 30px'; b.style.whiteSpace='nowrap';
   d.style.width='52px'; d.style.height='52px'; d.style.lineHeight='52px'; d.style.fontSize='38px'; }
 </script></body></html>
