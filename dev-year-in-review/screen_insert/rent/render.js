@@ -2,7 +2,7 @@ const { chromium } = require('playwright');
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:720}});
   await p.goto('file://' + process.cwd() + '/ui.html');
-  const T = "build an app that pays my rent\nautomatically\nwithout money\ni believe in u...";
+  const T = "build an app that pays my rent\ni have no money\nuse less credits...\ni believe in u...";
   const fps=24, N=96, t0=0.35, t1=3.35;
   for (let f=0; f<N; f++) {
     const t=f/fps; let n = t<t0?0: Math.min(T.length, Math.floor((t-t0)/(t1-t0)*T.length));
