@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;overflow:hidden;background:#000}
+.wrap{position:relative;overflow:hidden}
+.bg{position:absolute;inset:0;background:url(bg.png) no-repeat;}
+.grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,5,20,.85) 0%,rgba(10,5,20,.35) 35%,rgba(0,0,0,0) 60%)}
+.title{position:absolute;font-family:Anton,Impact,"DejaVu Sans",sans-serif;color:#fff;line-height:.92;letter-spacing:1px;text-transform:uppercase;
+  text-shadow:0 0 0 #000, 6px 6px 0 #ff2e7e, 12px 12px 0 rgba(0,0,0,.55);-webkit-text-stroke:3px #120818}
+.badge{position:absolute;display:inline-flex;align-items:center;gap:14px;font-family:Inter,"DejaVu Sans",sans-serif;font-weight:800;color:#fff;
+  background:#e8233f;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.badge .dot{display:inline-block;border-radius:50%;background:#fff;color:#e8233f;text-align:center;font-weight:900}
+</style></head><body>
+<div class="wrap" id="w"><div class="bg" id="bg"></div><div class="grad"></div>
+<div class="title" id="t">Out of<br>Credits</div>
+<div class="badge" id="b"><span class="dot" id="d">!</span><span>0 credits remaining</span></div></div>
+<script>
+const p=new URLSearchParams(location.search); const W=+p.get('w'), H=+p.get('h');
+const w=document.getElementById('w'); w.style.width=W+'px'; w.style.height=H+'px';
+const bg=document.getElementById('bg'), t=document.getElementById('t'), b=document.getElementById('b'), d=document.getElementById('d');
+if(W>H){ bg.style.backgroundSize='cover'; bg.style.backgroundPosition='center';
+  t.style.left='70px'; t.style.bottom='70px'; t.style.fontSize='230px';
+  b.style.left='76px'; b.style.top='70px'; b.style.fontSize='40px'; b.style.padding='16px 26px';
+  d.style.width='46px'; d.style.height='46px'; d.style.lineHeight='46px'; d.style.fontSize='34px';
+} else { bg.style.backgroundSize='auto 100%'; bg.style.backgroundPosition='60% center';
+  t.style.left='0'; t.style.right='0'; t.style.textAlign='center'; t.style.bottom='420px'; t.style.fontSize='250px';
+  b.style.left='50%'; b.style.transform='translateX(-50%)'; b.style.bottom='310px'; b.style.fontSize='44px'; b.style.padding='18px 30px'; b.style.whiteSpace='nowrap';
+  d.style.width='52px'; d.style.height='52px'; d.style.lineHeight='52px'; d.style.fontSize='38px'; }
+</script></body></html>
