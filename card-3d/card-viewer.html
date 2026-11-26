@@ -15,12 +15,20 @@
   select{appearance:none;-webkit-appearance:none;background:var(--chip) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a90a0'/%3E%3C/svg%3E") no-repeat right 12px center;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:8px 32px 8px 14px;font:inherit;cursor:pointer}
   select:focus-visible,button:focus-visible{outline:2px solid #6b7cff;outline-offset:2px}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .sliders{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;width:100%}
+  .sl{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:13px}
+  .sl output{min-width:44px;color:var(--fg);font-variant-numeric:tabular-nums;text-align:right}
+  input[type=range]{width:min(220px,52vw);accent-color:#6b7cff;cursor:pointer}
   .hint{position:fixed;top:14px;left:0;right:0;text-align:center;color:var(--mute);font-size:12px;pointer-events:none}
 </style>
 </head>
 <body>
 <div class="hint">Drag to tilt · scroll / pinch to zoom · double-tap to flip</div>
 <div class="ui">
+  <div class="sliders">
+    <label class="sl">Turn <input id="turn" type="range" min="-180" max="180" step="1" value="0"> <output id="turnV">0°</output></label>
+    <label class="sl">Auto-rotate <input id="spin" type="range" min="0" max="100" step="1" value="0"> <output id="spinV">Off</output></label>
+  </div>
   <label class="pick"><span class="sr">Card</span>
     <select id="cards" aria-label="Choose card"></select>
   </label>
@@ -49,7 +57,7 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 document.body.prepend(renderer.domElement);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(30,1,0.01,20);
-let camDist = 2.1; camera.position.set(0,0,camDist);
+let camDist = 2.35; camera.position.set(0,0,camDist);
 
 // rounded-rect slab; UVs are derived from position in the shader
 const s = new THREE.Shape();
@@ -151,6 +159,7 @@ const mat = new THREE.ShaderMaterial({
 });
 const card = new THREE.Mesh(geo,mat);
 scene.add(card);
+card.position.y=0.07;
 
 function show(i){
   const c=CARDS[i];
@@ -172,7 +181,7 @@ const cv=renderer.domElement;
 cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,rx:tX,ry:tY};cv.setPointerCapture(e.pointerId);
   const now=performance.now(); if(now-lastTap<300) doFlip(); lastTap=now;});
 cv.addEventListener('pointermove',e=>{if(!drag)return;
-  tY=drag.ry+(e.clientX-drag.x)*0.008; tX=drag.rx+(e.clientY-drag.y)*0.008;});
+  tY=drag.ry+(e.clientX-drag.x)*0.008; tX=drag.rx+(e.clientY-drag.y)*0.008; syncTurn();});
 cv.addEventListener('pointerup',()=>drag=null);
 cv.addEventListener('wheel',e=>{camDist=THREE.MathUtils.clamp(camDist+e.deltaY*0.0015,1.1,4);e.preventDefault();},{passive:false});
 const doFlip=()=>{tFlip+=Math.PI;};
@@ -180,7 +189,14 @@ const toggle=(id,fn)=>{const b=document.getElementById(id);b.onclick=()=>{const 
 document.getElementById('flip').onclick=doFlip;
 toggle('auto',on=>sway=on);
 toggle('foil',on=>mat.uniforms.uFoilOn.value=on?1:0);
-document.getElementById('reset').onclick=()=>{tX=0;tY=0;tFlip=Math.round(tFlip/(2*Math.PI))*2*Math.PI;camDist=2.1;};
+const turnEl=document.getElementById('turn'), turnV=document.getElementById('turnV');
+const spinEl=document.getElementById('spin'), spinV=document.getElementById('spinV');
+let spin=0;  // rad/s
+const wrap=a=>{a=(a+Math.PI)%(2*Math.PI); if(a<0)a+=2*Math.PI; return a-Math.PI;};
+const syncTurn=()=>{const d=Math.round(wrap(tY)*180/Math.PI); turnEl.value=d; turnV.textContent=d+'°';};
+turnEl.oninput=()=>{tY=rotY+wrap(turnEl.value*Math.PI/180-rotY); turnV.textContent=turnEl.value+'°';};
+spinEl.oninput=()=>{const v=+spinEl.value; spin=v/100*2.5; spinV.textContent=v?v+'%':'Off';};
+document.getElementById('reset').onclick=()=>{spinEl.value=0;spinEl.oninput();turnEl.value=0;turnV.textContent='0°';tX=0;tY=rotY+wrap(-rotY);tFlip=Math.round(tFlip/(2*Math.PI))*2*Math.PI;camDist=2.35;};
 
 function resize(){renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;
   camera.fov = camera.aspect<0.8 ? 42 : 30; camera.updateProjectionMatrix();}
@@ -188,8 +204,9 @@ addEventListener('resize',resize); resize();
 
 const clock=new THREE.Clock();
 renderer.setAnimationLoop(()=>{
-  const t=clock.getElapsedTime();
-  const sx = sway&&!drag ? Math.sin(t*0.9)*0.22 : 0, sy = sway&&!drag ? Math.sin(t*0.6)*0.35 : 0;
+  const dt=Math.min(clock.getDelta(),0.1), t=clock.elapsedTime;
+  if(spin>0 && !drag){ tY+=spin*dt; if(tY>Math.PI){tY-=2*Math.PI; rotY-=2*Math.PI;} syncTurn(); }
+  const sx = sway&&!drag ? Math.sin(t*0.9)*0.22 : 0, sy = sway&&!drag&&!spin ? Math.sin(t*0.6)*0.35 : 0;
   rotX+=(tX+sx-rotX)*0.12; rotY+=(tY+sy-rotY)*0.12; flip+=(tFlip-flip)*0.1;
   card.rotation.set(rotX, rotY+flip, 0);
   camera.position.z+= (camDist-camera.position.z)*0.15;
